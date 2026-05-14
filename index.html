@@ -11,8 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Great+Vibes&family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
-
-  @keyframes fadeIn {
+    @keyframes fadeIn {
   from {
     opacity: 0;
     transform: translateY(-20px);
@@ -307,36 +306,33 @@
   </div>
 
   <!-- БАННЕР -->
-  <div class="absolute top-0 left-0 w-full z-10 px-4 md:px-10 pt-3 md:pt-4">
+<div class="absolute top-0 left-0 w-full z-10 px-4 md:px-10 pt-3 md:pt-4">
 
-    <div class="glass w-full px-4 md:px-10 py-2 md:py-3 shadow-xl backdrop-blur-md">
+  <div class="glass w-full px-4 md:px-10 py-2 md:py-3 shadow-xl backdrop-blur-md animate-fade-in text-center">
 
-      <!-- ИМЕНА В ОДНУ СТРОКУ -->
-      <div class="flex items-center justify-center gap-4 md:gap-6">
-        <h1 class="hero-title script text-white text-6xl md:text-8xl drop-shadow-lg">
-          Владимир
-        </h1>
+    <div class="flex items-center justify-center gap-3 md:gap-5">
+      <h1 class="hero-title script text-white text-4xl md:text-6xl drop-shadow-lg">
+        Владимир
+      </h1>
 
-        <div class="text-white text-xl md:text-2xl">
-          &
-        </div>
-
-        <h1 class="hero-title script text-white text-6xl md:text-8xl drop-shadow-lg">
-          Надежда
-        </h1>
+      <div class="text-white text-xl md:text-2xl">
+        &
       </div>
 
-      <!-- ЛИНИЯ -->
-      <div class="gold-line my-2 md:my-3"></div>
-
-      <!-- ДАТА ПО ЦЕНТРУ -->
-      <p class="elegant text-center text-white/90 text-sm md:text-x1 tracking-wide">
-        20 июня 2026
-      </p>
-
+      <h1 class="hero-title script text-white text-4xl md:text-6xl drop-shadow-lg">
+        Надежда
+      </h1>
     </div>
 
+    <div class="gold-line my-2 md:my-3"></div>
+
+    <p class="elegant text-white/90 text-sm md:text-xl tracking-wide text-center">
+      20 июня 2026
+    </p>
+
   </div>
+
+</div>
 
 </section>
 
@@ -592,7 +588,7 @@
 
         <input
           type="text"
-          name="entry.546183403"
+          name="entry.2055329899"
           required
           placeholder="Например: Иван Иванов"
           class="w-full rounded-2xl border border-white/40 bg-white/70 backdrop-blur-md px-6 py-5 text-lg outline-none focus:ring-2 focus:ring-[#d4b47c]"
@@ -674,37 +670,37 @@
         <div class="space-y-4">
 
           <label class="flex items-center gap-4 cursor-pointer">
-            <input type="radio" name="entry.1713581431" value="Красное вино" required class="w-5 h-5">
+            <input type="radio" name="entry.1700576955" value="Красное вино" required class="w-5 h-5">
             <span class="text-lg">Красное вино</span>
           </label>
 
           <label class="flex items-center gap-4 cursor-pointer">
-            <input type="radio" name="entry.1713581431" value="Белое вино" class="w-5 h-5">
+            <input type="radio" name="entry.1700576955" value="Белое вино" class="w-5 h-5">
             <span class="text-lg">Белое вино</span>
           </label>
 
           <label class="flex items-center gap-4 cursor-pointer">
-            <input type="radio" name="entry.1713581431" value="Шампанское" class="w-5 h-5">
+            <input type="radio" name="entry.1700576955" value="Шампанское" class="w-5 h-5">
             <span class="text-lg">Шампанское</span>
           </label>
 
           <label class="flex items-center gap-4 cursor-pointer">
-            <input type="radio" name="entry.1713581431" value="Виски/коньяк" class="w-5 h-5">
+            <input type="radio" name="entry.1700576955" value="Виски/коньяк" class="w-5 h-5">
             <span class="text-lg">Виски / коньяк</span>
           </label>
 
           <label class="flex items-center gap-4 cursor-pointer">
-            <input type="radio" name="entry.1713581431" value="Водка" class="w-5 h-5">
+            <input type="radio" name="entry.1700576955" value="Водка" class="w-5 h-5">
             <span class="text-lg">Водка</span>
           </label>
 
           <label class="flex items-center gap-4 cursor-pointer">
-            <input type="radio" name="entry.1713581431" value="Не буду пить алкоголь" class="w-5 h-5">
+            <input type="radio" name="entry.1700576955" value="Не буду пить алкоголь" class="w-5 h-5">
             <span class="text-lg">Не буду пить алкоголь</span>
           </label>
 
           <label class="flex items-center gap-4 cursor-pointer">
-            <input type="radio" name="entry.1713581431" value="Свой вариант" class="w-5 h-5">
+            <input type="radio" name="entry.1700576955" value="Свой вариант" class="w-5 h-5">
             <span class="text-lg">Свой вариант напишу ниже</span>
           </label>
 
@@ -721,7 +717,7 @@
         </label>
 
         <textarea
-          name="entry.1928598046"
+          name="entry.460467685"
           rows="5"
           placeholder="Напишите Ваши пожелания..."
           class="w-full rounded-2xl border border-white/40 bg-white/70 backdrop-blur-md px-6 py-5 text-lg outline-none resize-none focus:ring-2 focus:ring-[#d4b47c]"
@@ -991,6 +987,41 @@
     }
 
   </script>
-<script src="script.js" defer></script>
+<script>
+
+document
+.getElementById('weddingForm')
+.addEventListener('submit', function(e){
+
+  e.preventDefault();
+
+  const form = e.target;
+
+  const hiddenIframe = document.createElement('iframe');
+
+  hiddenIframe.name = 'hidden_iframe';
+
+  hiddenIframe.style.display = 'none';
+
+  document.body.appendChild(hiddenIframe);
+
+  form.target = 'hidden_iframe';
+
+  form.action =
+  'https://docs.google.com/forms/d/1uIF2wcmtkFi79HyP-dd5PKT3p9TxJ9ZC_8w5XX4WsHc/formResponse';
+
+  form.method = 'POST';
+
+  form.submit();
+
+  form.style.display = 'none';
+
+  document
+    .getElementById('successMessage')
+    .classList.remove('hidden');
+
+});
+
+</script>
 </body>
 </html>
