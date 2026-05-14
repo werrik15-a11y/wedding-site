@@ -992,40 +992,31 @@
 
   </script>
 <script>
-
-document
-.getElementById('weddingForm')
-.addEventListener('submit', function(e){
-
+document.getElementById('weddingForm').addEventListener('submit', function(e) {
   e.preventDefault();
 
-  const form = e.target;
+  const form = this;
 
-  const hiddenIframe = document.createElement('iframe');
+  let iframe = document.querySelector('iframe[name="hidden_iframe"]');
 
-  hiddenIframe.name = 'hidden_iframe';
-
-  hiddenIframe.style.display = 'none';
-
-  document.body.appendChild(hiddenIframe);
+  if (!iframe) {
+    iframe = document.createElement('iframe');
+    iframe.name = 'hidden_iframe';
+    iframe.style.display = 'none';
+    document.body.appendChild(iframe);
+  }
 
   form.target = 'hidden_iframe';
-
-  form.action =
-  'https://docs.google.com/forms/d/e/1uIF2wcmtkFi79HyP-dd5PKT3p9TxJ9ZC_8w5XX4WsHc/formResponse';
-
+  form.action = 'https://docs.google.com/forms/d/e/1uIF2wcmtkFi79HyP-dd5PKT3p9TxJ9ZC_8w5XX4WsHc/formResponse';
   form.method = 'POST';
 
   form.submit();
 
   form.style.display = 'none';
 
-  document
-    .getElementById('successMessage')
-    .classList.remove('hidden');
-
+  const msg = document.getElementById('successMessage');
+  if (msg) msg.classList.remove('hidden');
 });
-
 </script>
 </body>
 </html>
