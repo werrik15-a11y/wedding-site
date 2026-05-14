@@ -592,7 +592,7 @@
 
         <input
           type="text"
-          name="entry.2055329899"
+          name="entry.546183403"
           required
           placeholder="Например: Иван Иванов"
           class="w-full rounded-2xl border border-white/40 bg-white/70 backdrop-blur-md px-6 py-5 text-lg outline-none focus:ring-2 focus:ring-[#d4b47c]"
@@ -721,7 +721,7 @@
         </label>
 
         <textarea
-          name="entry.460467685"
+          name="entry.1928598046"
           rows="5"
           placeholder="Напишите Ваши пожелания..."
           class="w-full rounded-2xl border border-white/40 bg-white/70 backdrop-blur-md px-6 py-5 text-lg outline-none resize-none focus:ring-2 focus:ring-[#d4b47c]"
@@ -992,30 +992,34 @@
 
   </script>
 <script>
-document.getElementById('weddingForm').addEventListener('submit', function(e) {
-  e.preventDefault();
+window.addEventListener('DOMContentLoaded', () => {
 
-  const form = this;
+  const form = document.getElementById('weddingForm');
 
-  let iframe = document.querySelector('iframe[name="hidden_iframe"]');
+  if (!form) return;
 
-  if (!iframe) {
-    iframe = document.createElement('iframe');
-    iframe.name = 'hidden_iframe';
-    iframe.style.display = 'none';
-    document.body.appendChild(iframe);
-  }
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
 
-  form.target = 'hidden_iframe';
-  form.action = 'https://docs.google.com/forms/d/e/1uIF2wcmtkFi79HyP-dd5PKT3p9TxJ9ZC_8w5XX4WsHc/formResponse';
-  form.method = 'POST';
+    const data = new FormData(form);
 
-  form.submit();
+    try {
+      await fetch('https://docs.google.com/forms/d/e/1uIF2wcmtkFi79HyP-dd5PKT3p9TxJ9ZC_8w5XX4WsHc/formResponse', {
+        method: 'POST',
+        mode: 'no-cors',
+        body: data
+      });
 
-  form.style.display = 'none';
+      form.style.display = 'none';
+      document.getElementById('successMessage')?.classList.remove('hidden');
 
-  const msg = document.getElementById('successMessage');
-  if (msg) msg.classList.remove('hidden');
+    } catch (err) {
+      alert('Ошибка отправки формы');
+      console.error(err);
+    }
+
+  });
+
 });
 </script>
 </body>
