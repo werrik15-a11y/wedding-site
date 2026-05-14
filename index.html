@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>Владимир & Надежда • 20 июня 2026</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Great+Vibes&family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+
+  @keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 1.2s ease-out both;
+}
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:'Playfair Display', serif;
+      background:
+        radial-gradient(circle at top left, rgba(212,180,124,0.18), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(163,177,138,0.18), transparent 30%),
+        #f8f4ed;
+      overflow-x:hidden;
+      color:#2d2d2d;
+    }
+
+    img{
+      max-width:100%;
+      display:block;
+    }
+
+    .script{
+      font-family:'Great Vibes', cursive;
+    }
+
+    .elegant{
+      font-family:'Cormorant Garamond', serif;
+    }
+
+    /* Glow background */
+
+    .glow{
+      position:fixed;
+      width:500px;
+      height:500px;
+      border-radius:50%;
+      filter:blur(120px);
+      z-index:-2;
+      animation:floatGlow 10s ease-in-out infinite;
+    }
+
+    .glow1{
+      background:rgba(212,180,124,0.22);
+      top:-100px;
+      left:-120px;
+    }
+
+    .glow2{
+      background:rgba(163,177,138,0.2);
+      bottom:-120px;
+      right:-120px;
+      animation-delay:4s;
+    }
+
+    @keyframes floatGlow{
+      0%,100%{
+        transform:translate(0,0) scale(1);
+      }
+      50%{
+        transform:translate(30px,-30px) scale(1.1);
+      }
+    }
+
+    /* Hero */
+
+    @keyframes slowZoom{
+      0%{
+        transform:scale(1.05);
+      }
+      100%{
+        transform:scale(1.15);
+      }
+    }
+
+    .hero-image{
+      animation:slowZoom 20s linear infinite alternate;
+    }
+
+    .hero-title{
+      line-height:0.9;
+    }
+
+    /* Sections */
+
+    .section{
+      opacity:0;
+      transform:translateY(70px);
+      transition:all 1.2s cubic-bezier(.17,.84,.44,1);
+    }
+
+    .section.visible{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    /* Glass */
+
+    .glass{
+      background:rgba(255,255,255,0.14);
+      backdrop-filter:blur(18px);
+      border:1px solid rgba(255,255,255,0.22);
+    }
+
+    /* Countdown */
+
+    .countdown-box{
+      backdrop-filter:blur(14px);
+      background:rgba(255,255,255,0.55);
+      border:1px solid rgba(255,255,255,0.5);
+      border-radius:28px;
+      padding:26px 12px;
+      transition:all .4s ease;
+      box-shadow:0 10px 35px rgba(0,0,0,0.05);
+    }
+
+    .countdown-box:hover{
+      transform:translateY(-8px) scale(1.03);
+      box-shadow:0 20px 50px rgba(0,0,0,0.12);
+    }
+
+    /* Gold line */
+
+    .gold-line{
+      width:100px;
+      height:1px;
+      background:linear-gradient(to right, transparent, #d4b47c, transparent);
+      margin:auto;
+    }
+
+    /* Music button */
+
+    .music-btn{
+      backdrop-filter:blur(16px);
+      background:rgba(255,255,255,0.2);
+      border:1px solid rgba(255,255,255,0.3);
+      transition:all .4s ease;
+    }
+
+    .music-btn:hover{
+      transform:scale(1.1);
+    }
+
+    /* Floating petals */
+
+    .petal{
+      position:fixed;
+      top:-20px;
+      pointer-events:none;
+      z-index:999;
+      color:#d4b47c;
+      animation:fall linear forwards;
+    }
+
+    @keyframes fall{
+      to{
+        transform:
+          translateY(110vh)
+          translateX(60px)
+          rotate(360deg);
+      }
+    }
+
+    /* Ornament */
+
+    .ornament{
+      opacity:0.15;
+      font-size:70px;
+      line-height:1;
+    }
+
+    /* RSVP button */
+
+    .shimmer{
+      position:relative;
+      overflow:hidden;
+    }
+
+    .shimmer::before{
+      content:'';
+      position:absolute;
+      top:0;
+      left:-120%;
+      width:70%;
+      height:100%;
+      background:linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,0.5),
+        transparent
+      );
+      transition:all .8s;
+    }
+
+    .shimmer:hover::before{
+      left:130%;
+    }
+
+    /* Adaptive */
+
+    @media (max-width:1024px){
+
+      .glass{
+        padding:40px 30px !important;
+      }
+
+    }
+
+    @media (max-width:768px){
+
+      .hero-title{
+        font-size:4.5rem !important;
+      }
+
+      .glass{
+        border-radius:28px !important;
+      }
+
+      .countdown-box{
+        padding:20px 10px;
+      }
+
+    }
+
+    @media (max-width:480px){
+
+      .hero-title{
+        font-size:3.4rem !important;
+      }
+
+      .countdown-box div:first-child{
+        font-size:2.2rem !important;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- Glow -->
+  <div class="glow glow1"></div>
+  <div class="glow glow2"></div>
+
+  <!-- Music -->
+  <div class="fixed bottom-6 right-6 z-50">
+
+    <button
+      id="musicBtn"
+      class="music-btn w-14 h-14 rounded-full text-white text-2xl shadow-2xl flex items-center justify-center"
+    >
+      ♫
+    </button>
+
+  </div>
+
+  <audio id="weddingMusic" loop>
+    <source src="https://assets.mixkit.co/music/preview/2470/2470.wav" type="audio/wav">
+  </audio>
+
+  <!-- Petals -->
+  <div id="petals"></div>
+
+  <div class="max-w-7xl mx-auto overflow-hidden">
+
+<!-- HERO -->
+
+<section class="min-h-screen relative overflow-hidden section">
+
+  <!-- Фото -->
+  <div class="absolute inset-0">
+    <img src="photo.jpg" class="w-full h-full object-cover">
+    <div class="absolute inset-0 bg-black/40"></div>
+  </div>
+
+  <!-- БАННЕР -->
+  <div class="absolute top-0 left-0 w-full z-10 px-4 md:px-10 pt-3 md:pt-4">
+
+    <div class="glass w-full px-4 md:px-10 py-2 md:py-3 shadow-xl backdrop-blur-md">
+
+      <!-- ИМЕНА В ОДНУ СТРОКУ -->
+      <div class="flex items-center justify-center gap-4 md:gap-6">
+        <h1 class="hero-title script text-white text-6xl md:text-8xl drop-shadow-lg">
+          Владимир
+        </h1>
+
+        <div class="text-white text-xl md:text-2xl">
+          &
+        </div>
+
+        <h1 class="hero-title script text-white text-6xl md:text-8xl drop-shadow-lg">
+          Надежда
+        </h1>
+      </div>
+
+      <!-- ЛИНИЯ -->
+      <div class="gold-line my-2 md:my-3"></div>
+
+      <!-- ДАТА ПО ЦЕНТРУ -->
+      <p class="elegant text-center text-white/90 text-sm md:text-x1 tracking-wide">
+        20 июня 2026
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+    <!-- Invitation -->
+
+    <section class="section px-6 md:px-16 py-24 text-center">
+
+      <div class="ornament mb-4">❦</div>
+
+      <h2 class="script text-5xl md:text-6xl text-[#4a5c4d] mb-10">
+        Дорогой Гость
+      </h2>
+
+      <div class="gold-line mb-10"></div>
+
+      <p class="elegant text-2xl md:text-3xl leading-relaxed max-w-4xl mx-auto font-light">
+
+        Мы рады сообщить Вам, что
+        <span class="font-semibold">20 июня 2026 года</span>
+
+        состоится самое важное и счастливое событие
+        в нашей жизни — день нашей свадьбы.
+
+      </p>
+
+      <p class="script text-4xl md:text-5xl text-[#b08968] mt-14 leading-relaxed">
+
+        С огромной радостью приглашаем Вас
+        разделить вместе с нами этот особенный день
+
+      </p>
+
+    </section>
+
+    <!-- Countdown -->
+
+    <section class="section px-6 md:px-12 py-20">
+
+      <h2 class="script text-5xl md:text-6xl text-center text-[#4a5c4d] mb-16">
+        До свадьбы осталось
+      </h2>
+
+      <div class="flex justify-center">
+
+        <div
+          id="countdown"
+          class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 max-w-4xl w-full"
+        ></div>
+
+      </div>
+
+    </section>
+
+    <!-- Timeline -->
+
+    <section class="section px-6 md:px-16 py-24">
+
+      <div class="text-center mb-16">
+
+        <div class="ornament mb-3">❦</div>
+
+        <h2 class="script text-5xl md:text-6xl text-[#4a5c4d]">
+          Программа дня
+        </h2>
+
+      </div>
+
+      <div class="space-y-10 max-w-4xl mx-auto">
+
+        <div class="glass rounded-[30px] p-8 md:p-10">
+
+          <div class="flex items-center justify-between flex-wrap gap-4">
+
+            <div>
+
+              <p class="text-[#b08968] uppercase tracking-[4px] text-sm mb-2">
+                Сбор гостей
+              </p>
+
+              <h3 class="text-3xl elegant font-semibold">
+                Welcome
+              </h3>
+
+            </div>
+
+            <div class="text-4xl script text-[#4a5c4d]">
+              15:00
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="glass rounded-[30px] p-8 md:p-10">
+
+          <div class="flex items-center justify-between flex-wrap gap-4">
+
+            <div>
+
+              <p class="text-[#b08968] uppercase tracking-[4px] text-sm mb-2">
+                Церемония
+              </p>
+
+              <h3 class="text-3xl elegant font-semibold">
+                Wedding Ceremony
+              </h3>
+
+            </div>
+
+            <div class="text-4xl script text-[#4a5c4d]">
+              16:00
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="glass rounded-[30px] p-8 md:p-10">
+
+          <div class="flex items-center justify-between flex-wrap gap-4">
+
+            <div>
+
+              <p class="text-[#b08968] uppercase tracking-[4px] text-sm mb-2">
+                Праздничный ужин
+              </p>
+
+              <h3 class="text-3xl elegant font-semibold">
+                Celebration
+              </h3>
+
+            </div>
+
+            <div class="text-4xl script text-[#4a5c4d]">
+              17:00
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- Love Story -->
+
+    <section class="section px-6 md:px-16 py-24 text-center">
+
+      <div class="ornament mb-4">❦</div>
+
+      <h2 class="script text-5xl md:text-6xl text-[#4a5c4d] mb-10">
+        Наша история
+      </h2>
+
+      <div class="gold-line mb-12"></div>
+
+      <div class="max-w-3xl mx-auto space-y-8 text-xl md:text-2xl elegant leading-relaxed">
+
+        <p>
+          Всё началось со случайной встречи,
+          которая изменила наши жизни навсегда.
+        </p>
+
+        <p>
+          День за днем наша история становилась
+          всё теплее, счастливее и прекраснее.
+        </p>
+
+        <p>
+          И теперь мы хотим разделить этот
+          незабываемый день вместе с Вами.
+        </p>
+
+      </div>
+
+      <div class="script text-5xl mt-16 text-[#b08968]">
+        Love Forever
+      </div>
+
+    </section>
+
+    <!-- Details -->
+
+    <section class="section px-6 md:px-16 py-24">
+
+      <div class="grid md:grid-cols-2 gap-10">
+
+        <div class="glass rounded-[35px] p-10">
+
+          <h3 class="script text-4xl text-[#4a5c4d] mb-6">
+            Меню
+          </h3>
+
+          <p class="text-lg leading-relaxed text-stone-700">
+            Мы очень хотим, чтобы каждому гостю
+            было комфортно и вкусно.
+            Пожалуйста, укажите в анкете
+            Ваши предпочтения по еде.
+          </p>
+
+        </div>
+
+        <div class="glass rounded-[35px] p-10">
+
+          <h3 class="script text-4xl text-[#4a5c4d] mb-6">
+            Подарки
+          </h3>
+
+          <p class="text-lg leading-relaxed text-stone-700">
+            Ваше присутствие —
+            самый ценный подарок для нас.
+            Но если Вы захотите поздравить нас дополнительно,
+            мы будем рады вкладу в наше будущее.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+<section class="section px-6 md:px-16 py-24 text-center">
+
+  <div class="glass rounded-[40px] p-6 md:p-12 max-w-5xl mx-auto">
+
+    <div class="ornament mb-4">❦</div>
+
+    <h2 class="script text-5xl md:text-6xl text-[#4a5c4d] mb-8">
+      Подтвердите участие
+    </h2>
+
+    <p class="text-lg md:text-xl text-stone-700 mb-14 max-w-3xl mx-auto leading-relaxed">
+      Пожалуйста, заполните небольшую анкету ниже.
+      Нам будет очень приятно узнать о Вашем присутствии,
+      предпочтениях по меню и напиткам.
+    </p>
+
+    <!-- FORM -->
+
+    <form
+      id="weddingForm"
+      class="space-y-10 text-left"
+    >
+
+      <!-- Name -->
+
+      <div>
+
+        <label class="block mb-4 text-xl elegant text-[#4a5c4d]">
+          Ваше имя и фамилия
+        </label>
+
+        <input
+          type="text"
+          name="entry.2055329899"
+          required
+          placeholder="Например: Иван Иванов"
+          class="w-full rounded-2xl border border-white/40 bg-white/70 backdrop-blur-md px-6 py-5 text-lg outline-none focus:ring-2 focus:ring-[#d4b47c]"
+        >
+
+      </div>
+
+      <!-- Attendance -->
+
+      <div>
+
+        <label class="block mb-5 text-xl elegant text-[#4a5c4d]">
+          Подтверждение участия
+        </label>
+
+        <div class="space-y-4">
+
+          <label class="flex items-center gap-4 cursor-pointer">
+            <input type="radio" name="entry.1505098904" value="Да, я буду один" required class="w-5 h-5">
+            <span class="text-lg">Да, я буду один</span>
+          </label>
+
+          <label class="flex items-center gap-4 cursor-pointer">
+            <input type="radio" name="entry.1505098904" value="Да, мы будем вдвоем" class="w-5 h-5">
+            <span class="text-lg">Да, мы будем вдвоем</span>
+          </label>
+
+          <label class="flex items-center gap-4 cursor-pointer">
+            <input type="radio" name="entry.1505098904" value="Нет, к сожалению, у меня/нас не получится прийти" class="w-5 h-5">
+            <span class="text-lg">Нет, к сожалению, не получится прийти</span>
+          </label>
+
+        </div>
+
+      </div>
+
+      <!-- Food -->
+
+      <div>
+
+        <label class="block mb-5 text-xl elegant text-[#4a5c4d]">
+          Есть ли у Вас предпочтения по еде?
+        </label>
+
+        <div class="space-y-4">
+
+          <label class="flex items-center gap-4 cursor-pointer">
+            <input type="radio" name="entry.570979626" value="Нет" required class="w-5 h-5">
+            <span class="text-lg">Нет</span>
+          </label>
+
+          <label class="flex items-center gap-4 cursor-pointer">
+            <input type="radio" name="entry.570979626" value="Не ем мясо" class="w-5 h-5">
+            <span class="text-lg">Не ем мясо</span>
+          </label>
+
+          <label class="flex items-center gap-4 cursor-pointer">
+            <input type="radio" name="entry.570979626" value="Не ем рыбу" class="w-5 h-5">
+            <span class="text-lg">Не ем рыбу</span>
+          </label>
+
+          <label class="flex items-center gap-4 cursor-pointer">
+            <input type="radio" name="entry.570979626" value="Вегетарианец" class="w-5 h-5">
+            <span class="text-lg">Вегетарианец</span>
+          </label>
+
+        </div>
+
+      </div>
+
+      <!-- Alcohol -->
+
+      <div>
+
+        <label class="block mb-5 text-xl elegant text-[#4a5c4d]">
+          Какой алкоголь Вы предпочитаете?
+        </label>
+
+        <div class="space-y-4">
+
+          <label class="flex items-center gap-4 cursor-pointer">
+            <input type="radio" name="entry.1713581431" value="Красное вино" required class="w-5 h-5">
+            <span class="text-lg">Красное вино</span>
+          </label>
+
+          <label class="flex items-center gap-4 cursor-pointer">
+            <input type="radio" name="entry.1713581431" value="Белое вино" class="w-5 h-5">
+            <span class="text-lg">Белое вино</span>
+          </label>
+
+          <label class="flex items-center gap-4 cursor-pointer">
+            <input type="radio" name="entry.1713581431" value="Шампанское" class="w-5 h-5">
+            <span class="text-lg">Шампанское</span>
+          </label>
+
+          <label class="flex items-center gap-4 cursor-pointer">
+            <input type="radio" name="entry.1713581431" value="Виски/коньяк" class="w-5 h-5">
+            <span class="text-lg">Виски / коньяк</span>
+          </label>
+
+          <label class="flex items-center gap-4 cursor-pointer">
+            <input type="radio" name="entry.1713581431" value="Водка" class="w-5 h-5">
+            <span class="text-lg">Водка</span>
+          </label>
+
+          <label class="flex items-center gap-4 cursor-pointer">
+            <input type="radio" name="entry.1713581431" value="Не буду пить алкоголь" class="w-5 h-5">
+            <span class="text-lg">Не буду пить алкоголь</span>
+          </label>
+
+          <label class="flex items-center gap-4 cursor-pointer">
+            <input type="radio" name="entry.1713581431" value="Свой вариант" class="w-5 h-5">
+            <span class="text-lg">Свой вариант напишу ниже</span>
+          </label>
+
+        </div>
+
+      </div>
+
+      <!-- Message -->
+
+      <div>
+
+        <label class="block mb-4 text-xl elegant text-[#4a5c4d]">
+          Пожелания / свой вариант напитков / сообщение
+        </label>
+
+        <textarea
+          name="entry.460467685"
+          rows="5"
+          placeholder="Напишите Ваши пожелания..."
+          class="w-full rounded-2xl border border-white/40 bg-white/70 backdrop-blur-md px-6 py-5 text-lg outline-none resize-none focus:ring-2 focus:ring-[#d4b47c]"
+        ></textarea>
+
+      </div>
+
+      <!-- Submit -->
+
+      <div class="pt-6 text-center">
+
+        <button
+          type="submit"
+          class="relative overflow-hidden
+          bg-gradient-to-r from-[#8b7355] to-[#d4b47c]
+          hover:scale-[1.03]
+          transition-all duration-500
+          text-white text-xl md:text-2xl
+          px-14 py-6 rounded-full shadow-2xl"
+        >
+          Отправить ответ ❤️
+        </button>
+
+      </div>
+
+    </form>
+
+    <!-- Success -->
+
+    <div
+      id="successMessage"
+      class="hidden mt-12 text-center"
+    >
+
+      <div class="script text-5xl text-[#b08968] mb-4">
+        Спасибо ❤️
+      </div>
+
+      <p class="text-xl text-stone-700">
+        Мы будем счастливы разделить этот день вместе с Вами!
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+    <!-- Location -->
+
+    <section class="section px-6 md:px-16 py-24">
+
+      <div class="text-center mb-12">
+
+        <div class="ornament mb-4">❦</div>
+
+        <h2 class="script text-5xl md:text-6xl text-[#4a5c4d] mb-6">
+          Место проведения
+        </h2>
+
+        <p class="text-xl elegant text-stone-700">
+          Голицын Клуб • Минское шоссе, 45
+        </p>
+
+      </div>
+
+      <div class="rounded-[40px] overflow-hidden shadow-2xl border border-white/30">
+
+        <script
+          type="text/javascript"
+          charset="utf-8"
+          async
+          src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A8d2c0b6215c4738c9c2fac121ee21ff05ae39aa74f1306a90719e306bb9ef2b7&amp;width=100%&amp;height=500&amp;lang=ru_RU&amp;scroll=true">
+        </script>
+
+      </div>
+
+    </section>
+
+    <!-- Footer -->
+
+    <footer class="section text-center py-20 px-6">
+
+      <div class="script text-6xl text-[#b08968] mb-6">
+        Владимир & Надежда
+      </div>
+
+      <div class="gold-line mb-8"></div>
+
+      <p class="elegant text-2xl text-stone-700">
+        20 июня 2026
+      </p>
+
+    </footer>
+
+  </div>
+
+  <script>
+
+    // Music
+
+    const audio = document.getElementById('weddingMusic');
+
+    const musicBtn = document.getElementById('musicBtn');
+
+    musicBtn.addEventListener('click', () => {
+
+      if(audio.paused){
+
+        audio.play();
+
+        musicBtn.innerHTML = '❚❚';
+
+      }else{
+
+        audio.pause();
+
+        musicBtn.innerHTML = '♫';
+
+      }
+
+    });
+
+    // Countdown
+
+    function startCountdown(){
+
+      const weddingDate = new Date('2026-06-20T15:00:00').getTime();
+
+      setInterval(() => {
+
+        const now = new Date().getTime();
+
+        const distance = weddingDate - now;
+
+        if(distance < 0) return;
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+
+        const hours = Math.floor(
+          (distance % (1000 * 60 * 60 * 24))
+          / (1000 * 60 * 60)
+        );
+
+        const minutes = Math.floor(
+          (distance % (1000 * 60 * 60))
+          / (1000 * 60)
+        );
+
+        const seconds = Math.floor(
+          (distance % (1000 * 60))
+          / 1000
+        );
+
+        document.getElementById('countdown').innerHTML = `
+
+          <div class="countdown-box text-center">
+            <div class="text-5xl md:text-6xl font-bold text-[#4a5c4d]">
+              ${days}
+            </div>
+            <div class="uppercase tracking-[3px] mt-4 text-sm text-stone-600">
+              Дней
+            </div>
+          </div>
+
+          <div class="countdown-box text-center">
+            <div class="text-5xl md:text-6xl font-bold text-[#4a5c4d]">
+              ${hours}
+            </div>
+            <div class="uppercase tracking-[3px] mt-4 text-sm text-stone-600">
+              Часов
+            </div>
+          </div>
+
+          <div class="countdown-box text-center">
+            <div class="text-5xl md:text-6xl font-bold text-[#4a5c4d]">
+              ${minutes}
+            </div>
+            <div class="uppercase tracking-[3px] mt-4 text-sm text-stone-600">
+              Минут
+            </div>
+          </div>
+
+          <div class="countdown-box text-center">
+            <div class="text-5xl md:text-6xl font-bold text-[#4a5c4d]">
+              ${seconds}
+            </div>
+            <div class="uppercase tracking-[3px] mt-4 text-sm text-stone-600">
+              Секунд
+            </div>
+          </div>
+
+        `;
+
+      },1000);
+
+    }
+
+    // Reveal animations
+
+    function animateSections(){
+
+      const sections = document.querySelectorAll('.section');
+
+      const observer = new IntersectionObserver((entries) => {
+
+        entries.forEach(entry => {
+
+          if(entry.isIntersecting){
+
+            entry.target.classList.add('visible');
+
+          }else{
+
+            entry.target.classList.remove('visible');
+
+          }
+
+        });
+
+      }, {
+        threshold:0.15
+      });
+
+      sections.forEach(section => observer.observe(section));
+
+    }
+
+    // Floating petals
+
+    function createPetal(){
+
+      const petal = document.createElement('div');
+
+      petal.classList.add('petal');
+
+      petal.innerHTML = '❀';
+
+      petal.style.left = Math.random() * window.innerWidth + 'px';
+
+      petal.style.fontSize =
+        (Math.random() * 14 + 14) + 'px';
+
+      petal.style.opacity = Math.random();
+
+      petal.style.animationDuration =
+        (Math.random() * 6 + 6) + 's';
+
+      document.body.appendChild(petal);
+
+      setTimeout(() => {
+        petal.remove();
+      }, 12000);
+
+    }
+
+    setInterval(createPetal, 700);
+
+    // Init
+
+    window.onload = () => {
+
+      startCountdown();
+
+      animateSections();
+
+    }
+
+  </script>
+<script>
+
+document
+.getElementById('weddingForm')
+.addEventListener('submit', function(e){
+
+  e.preventDefault();
+
+  const form = e.target;
+
+  const hiddenIframe = document.createElement('iframe');
+
+  hiddenIframe.name = 'hidden_iframe';
+
+  hiddenIframe.style.display = 'none';
+
+  document.body.appendChild(hiddenIframe);
+
+  form.target = 'hidden_iframe';
+
+  form.action =
+  'https://docs.google.com/forms/d/e/1uIF2wcmtkFi79HyP-dd5PKT3p9TxJ9ZC_8w5XX4WsHc/formResponse';
+
+  form.method = 'POST';
+
+  form.submit();
+
+  form.style.display = 'none';
+
+  document
+    .getElementById('successMessage')
+    .classList.remove('hidden');
+
+});
+
+</script>
+</body>
+</html>
