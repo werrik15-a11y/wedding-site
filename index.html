@@ -254,22 +254,71 @@
 
     }
 
-    @media (max-width:480px){
+@media (max-width:480px){
 
-      .hero-title{
-        font-size:3.4rem !important;
-      }
+  .hero-title{
+    font-size:3.4rem !important;
+  }
 
-      .countdown-box div:first-child{
-        font-size:2.2rem !important;
-      }
+  .countdown-box div:first-child{
+    font-size:2.2rem !important;
+  }
 
-    }
+}
 
-  </style>
+/* LOCK BODY */
+
+body.locked{
+  overflow:hidden;
+}
+
+</style>
 </head>
 
 <body>
+  <div
+  id="intro"
+  class="fixed inset-0 z-[9999]
+  bg-[#1f1f1f]
+  flex flex-col items-center justify-center
+  transition-all duration-[2000ms]"
+>
+
+  <div
+    id="envelope"
+    class="cursor-pointer transition-all duration-700 hover:scale-105"
+  >
+
+    <div class="relative w-[220px] h-[140px]">
+
+      <!-- Конверт -->
+
+      <div class="absolute inset-0 bg-[#d4b47c] rounded-b-xl shadow-2xl"></div>
+
+      <!-- Крышка -->
+
+      <div
+        id="flap"
+        class="absolute top-0 left-0 w-0 h-0
+        border-l-[110px]
+        border-r-[110px]
+        border-t-[80px]
+        border-l-transparent
+        border-r-transparent
+        border-t-[#e7c98f]
+        origin-top
+        transition-all duration-1000"
+      ></div>
+
+    </div>
+
+  </div>
+
+  <p class="mt-10 text-white/80 text-xl elegant tracking-[3px]">
+    Нажмите, чтобы открыть приглашение
+  </p>
+
+</div>
 
   <!-- Glow -->
   <div class="glow glow1"></div>
@@ -287,9 +336,9 @@
 
   </div>
 
-  <audio id="weddingMusic" loop>
-    <source src="https://assets.mixkit.co/music/preview/2470/2470.wav" type="audio/wav">
-  </audio>
+<audio id="weddingMusic" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
 
   <!-- Petals -->
   <div id="petals"></div>
@@ -312,16 +361,16 @@
     <div class="glass w-full px-4 md:px-10 py-2 md:py-3 shadow-xl backdrop-blur-md">
 
       <!-- ИМЕНА В ОДНУ СТРОКУ -->
-      <div class="flex items-center justify-center gap-4 md:gap-6">
-        <h1 class="hero-title script text-white text-5xl md:text-7xl drop-shadow-lg">
+      <div class="flex flex-col md:flex-row items-center justify-center gap-1 md:gap-6">
+        <h1 class="hero-title script text-white text-4xl sm:text-5xl md:text-7xl drop-shadow-lg">
           Владимир
         </h1>
 
-        <div class="text-white text-xl md:text-2xl">
+        <div class="text-white text-lg md:text-2xl">
           &
         </div>
 
-        <h1 class="hero-title script text-white text-5xl md:text-7xl drop-shadow-lg">
+        <h1 class="hero-title script text-white text-4xl sm:text-5xl md:text-7xl drop-shadow-lg">
           Надежда
         </h1>
       </div>
@@ -578,6 +627,7 @@
     <!-- FORM -->
 
 <form
+  id="weddingForm"
   action="https://docs.google.com/forms/d/1uIF2wcmtkFi79HyP-dd5PKT3p9TxJ9ZC_8w5XX4WsHc/formResponse"
   method="POST"
   target="_blank"
@@ -755,12 +805,13 @@
 
     <!-- Success -->
 
-    <div
-      id="successMessage"
-      class="hidden mt-12 text-center"
-    >
+<div
+  id="successMessage"
+  class="hidden min-h-[60vh] flex flex-col items-center justify-center text-center"
+>
 
       <div class="script text-5xl text-[#b08968] mb-4">
+        <div class="ornament mb-6">❦</div>
         Спасибо ❤️
       </div>
 
@@ -835,7 +886,27 @@
 
       if(audio.paused){
 
-        audio.play();
+        audio.volume = 0;
+
+audio.play();
+
+let volume = 0;
+
+const fade = setInterval(() => {
+
+  if(volume < 0.9){
+
+    volume += 0.05;
+
+    audio.volume = volume;
+
+  }else{
+
+    clearInterval(fade);
+
+  }
+
+}, 200);;
 
         musicBtn.innerHTML = '❚❚';
 
@@ -982,18 +1053,87 @@
 
     }
 
-    setInterval(createPetal, 700);
+setInterval(createPetal, 700);
 
-    // Init
 
-    window.onload = () => {
 
-      startCountdown();
+// =========================
+// INTRO ENVELOPE
+// =========================
 
-      animateSections();
+document.body.classList.add('locked');
 
-    }
+const intro = document.getElementById('intro');
+
+const envelope = document.getElementById('envelope');
+
+const flap = document.getElementById('flap');
+
+envelope.addEventListener('click', () => {
+
+  flap.style.transform = 'rotateX(180deg)';
+
+  audio.play();
+
+  musicBtn.innerHTML = '❚❚';
+
+  setTimeout(() => {
+
+    intro.style.opacity = '0';
+
+    intro.style.pointerEvents = 'none';
+
+    document.body.classList.remove('locked');
+
+  }, 1200);
+
+});
+
+
+
+// Init
+
+window.onload = () => {
+
+  startCountdown();
+
+  animateSections();
+
+}
 
   </script>
+  <script>
+
+document
+.getElementById('weddingForm')
+.addEventListener('submit', function(){
+
+  setTimeout(() => {
+
+    // скрываем форму
+    document
+      .getElementById('weddingForm')
+      .style.display = 'none';
+
+    // показываем блок спасибо
+    const success =
+      document.getElementById('successMessage');
+
+    success.classList.remove('hidden');
+
+    // прокрутка к центру
+    window.scrollTo({
+      top:
+        success.offsetTop -
+        (window.innerHeight / 2) +
+        (success.offsetHeight / 2),
+      behavior:'smooth'
+    });
+
+  }, 500);
+
+});
+
+</script>
 </body>
 </html>
