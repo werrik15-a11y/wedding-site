@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+  <meta name="theme-color" content="#d4b47c">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
@@ -276,6 +277,26 @@ html{
   overflow-x:hidden;
   scroll-padding-top:40px;
 }
+#intro{
+  transition:
+    opacity 1.8s ease,
+    visibility 1.8s ease;
+}
+.min-h-screen{
+  min-height:100svh;
+}
+@keyframes envelopeFloat{
+  0%,100%{
+    transform:translateY(0px);
+  }
+  50%{
+    transform:translateY(-10px);
+  }
+}
+
+#envelope{
+  animation:envelopeFloat 3s ease-in-out infinite;
+}
 </style>
 </head>
 
@@ -360,7 +381,7 @@ html{
   src="photo.jpg"
   class="w-full h-full object-cover object-[center_40%]"
      />
-    <div class="absolute inset-0 bg-black/40"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-black/45"></div>
   </div>
 
 <!-- БАННЕР -->
@@ -655,6 +676,7 @@ html{
     </p>
 
   </div>
+</div>
     </section>
 
 <section class="section px-6 md:px-16 py-24 text-center">
@@ -1103,7 +1125,10 @@ const fade = setInterval(() => {
 
     }
 
-setInterval(createPetal, 700);
+const petalInterval =
+  window.innerWidth < 768 ? 1400 : 700;
+
+setInterval(createPetal, petalInterval);
 
 
 
@@ -1123,15 +1148,35 @@ envelope.addEventListener('click', () => {
 
   flap.style.transform = 'rotateX(180deg)';
 
-  audio.play();
+  audio.volume = 0;
 
-  musicBtn.innerHTML = '❚❚';
+audio.play();
+
+let volume = 0;
+
+const fade = setInterval(() => {
+
+  if(volume < 0.28){
+
+    volume += 0.02;
+
+    audio.volume = volume;
+
+  }else{
+
+    clearInterval(fade);
+
+  }
+
+}, 180);
+
+musicBtn.innerHTML = '❚❚';
 
   setTimeout(() => {
 
     intro.style.opacity = '0';
-
-    intro.style.pointerEvents = 'none';
+intro.style.visibility = 'hidden';
+intro.style.pointerEvents = 'none';
 
     document.body.classList.remove('locked');
 
