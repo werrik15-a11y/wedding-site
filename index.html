@@ -271,7 +271,11 @@
 body.locked{
   overflow:hidden;
 }
-
+html{
+  scroll-behavior:smooth;
+  overflow-x:hidden;
+  scroll-padding-top:40px;
+}
 </style>
 </head>
 
@@ -630,9 +634,13 @@ body.locked{
   id="weddingForm"
   action="https://docs.google.com/forms/d/1uIF2wcmtkFi79HyP-dd5PKT3p9TxJ9ZC_8w5XX4WsHc/formResponse"
   method="POST"
-  target="_blank"
   class="space-y-10 text-left"
 >
+<iframe
+  name="hidden_iframe"
+  id="hidden_iframe"
+  style="display:none;"
+></iframe>
 <div class="mt-10 text-center text-stone-600">
   После отправки откроется подтверждение в новой вкладке ❤️
 </div>
@@ -807,7 +815,7 @@ body.locked{
 
 <div
   id="successMessage"
-  class="hidden min-h-[60vh] flex flex-col items-center justify-center text-center"
+  class="hidden min-h-screen flex flex-col items-center justify-center text-center"
 >
 
       <div class="script text-5xl text-[#b08968] mb-4">
@@ -1104,33 +1112,31 @@ window.onload = () => {
   </script>
   <script>
 
-document
-.getElementById('weddingForm')
-.addEventListener('submit', function(){
+const form =
+  document.getElementById('weddingForm');
+
+form.target = 'hidden_iframe';
+
+form.addEventListener('submit', function(){
 
   setTimeout(() => {
 
     // скрываем форму
-    document
-      .getElementById('weddingForm')
-      .style.display = 'none';
+    form.style.display = 'none';
 
-    // показываем блок спасибо
+    // показываем спасибо
     const success =
       document.getElementById('successMessage');
 
     success.classList.remove('hidden');
 
-    // прокрутка к центру
-    window.scrollTo({
-      top:
-        success.offsetTop -
-        (window.innerHeight / 2) +
-        (success.offsetHeight / 2),
-      behavior:'smooth'
+    // прокрутка
+    success.scrollIntoView({
+      behavior:'smooth',
+      block:'center'
     });
 
-  }, 500);
+  }, 800);
 
 });
 
